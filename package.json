@@ -1,0 +1,33 @@
+{
+  "name" : "CMS",
+  "version" : "0.6",
+  "author" : "Angel bejarano / programador.angel@gmail.com",
+  "view":{
+      "dashboard":"vista-dashboard",
+      "paginas":"paginas/vista-paginas",
+      "idiomas":"lenguajes/vista-lenguajes",
+      "publicacion" : "publicaciones/vista-publicaciones"
+  },
+  "model":{
+      "paginas":"MPagina",
+      "idiomas":"MPagina",
+      "publicacion":"MArticulo"
+  },
+  "controller":{
+      "paginas":"CPagina",
+      "idiomas":"CPagina",
+      "publicacion":"CArticulo"
+  },
+  "components": {
+      "login" : true
+  },
+  "services" : {
+    "DataBaseSQL" : {
+        "servidor": "localhost",
+        "usuario":"root",
+        "clave":"130202@Ngel",
+        "tipo":"mysql",
+        "nombre_base_datos":"db_ipu"
+    }
+  }
+}
