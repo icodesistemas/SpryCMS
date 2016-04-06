@@ -1,0 +1,39 @@
+#archivo de configuracion del virtual host en nginx
+server{
+       listen 80;
+        root /home/abejarano1/Documentos/Proyectos/ipu_canada;
+
+        index index.php;
+        server_name ipu;
+
+
+        location / {
+                if (!-e $request_filename){
+                        rewrite ^(.*)$ /index.php?ROUTE=$1;
+                }
+        }
+
+
+        #error_log /home/abejarano1/Documentos/Proyectos/ipu_canada/errorLog.log;
+        error_page 404 /404.html;
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+                root /usr/share/nginx/html;
+        }
+
+        location ~ \.php$ {
+                fastcgi_param   SCRIPT_FILENAME    $document_root$fastcgi_script_name;
+                fastcgi_param   SCRIPT_NAME        $fastcgi_script_name;
+                #fastcgi_pass unix:/var/run/php5-fpm.sock;
+                fastcgi_pass 127.0.0.1:9000;
+                try_files $uri =404;
+                fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                fastcgi_index index.php;
+                include fastcgi_params;
+
+        }
+}
+
+
+#para solucionar 403 de nginx
+chcon -Rt httpd_sys_content_t /home/abejarano1/Documentos/Proyectos/
