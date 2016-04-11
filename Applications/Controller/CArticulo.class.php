@@ -24,7 +24,7 @@
             $msj = "";
             $data =  array(
                 'titulo' => addslashes(strip_tags($_POST["titulo_publicacion"])),
-                'descripcion' => addslashes(strip_tags($_POST["textarea-descripcion"])),
+                'descripcion' => $_POST["textarea-descripcion"],
                 'url' => $url,
                 'estado' => $status,
                 'fk_pk_pagina' => addslashes(strip_tags($_POST["pk_pagina"])),
