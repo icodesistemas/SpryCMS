@@ -26,8 +26,13 @@ class SpryPath{
         }
         // siempre la primer posicion sera el nombre la vista
         $this->route = explode("/",$_REQUEST["ROUTE"]);
+        
+        if(phpversion() <= '5.6.21'){
+            $this->view = $this->route[0];
+        }else{
+            $this->view = $this->route[1];
+        }
 
-        $this->view = $this->route[1];
 
 
     }
