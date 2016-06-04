@@ -14,6 +14,22 @@
     require_once "Service/DataBaseService/Pdo/DataBase.php";
     require_once "Service/EmailService/Email.php";
 
+    /* validar si las variables de entorno estan definidas */
+
+if(!defined('__APPLICATION_PATH')){
+    die('Por favor defina la constante __APPLICATOINS_PATH');
+}
+if(!defined('__APPLICATION_FOLDER_VIEW')){
+    die('Por favor defina la constante __APPLICATION_FOLDER_VIEW');
+}
+if(!defined('__APPLICATION_FOLDER_MODEL')){
+    die('Por favor defina la constante __APPLICATION_FOLDER_MODEL');
+}
+if(!defined('__APPLICATION_FOLDER_CONTROLLER')){
+    die('Por favor defina la constante __APPLICATION_FOLDER_CONTROLLER');
+}
+
+
     /** @var  $file contiene la ruta al archivo package.json que contiene la configuracion general de la aplicacion */
     $file = __APPLICATION_PATH."/package.json";
     $_SESSION['__APPLICATION_PATH'] = __APPLICATION_PATH;
